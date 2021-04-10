@@ -1,4 +1,8 @@
 package com.licoreria.licoreria.brands.domain;
 
-public interface BrandsRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.math.BigDecimal;
+
+public interface BrandsRepository extends JpaRepository<Brand, BigDecimal> {
 }
