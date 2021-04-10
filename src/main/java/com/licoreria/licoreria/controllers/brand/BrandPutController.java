@@ -1,20 +1,20 @@
 package com.licoreria.licoreria.controllers.brand;
 
 import com.licoreria.licoreria.brands.aplication.create.BrandRequest;
+import com.licoreria.licoreria.brands.domain.Brand;
 import com.licoreria.licoreria.brands.domain.create.BrandCreator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("api/v1/brand")
 public class BrandPutController
 {
 
@@ -24,9 +24,7 @@ public class BrandPutController
     public ResponseEntity<HttpStatus> create(@PathVariable BigDecimal codigo, @RequestBody Request brand)
     {
         BrandRequest brandRequest = new BrandRequest(codigo, brand.getNombre());
-
         brandCreator.create(brandRequest);
-
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
