@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/v1/brand")
-public class BrandPutController
+public class BrandController
 {
     private final BrandCreator brandCreator;
 
