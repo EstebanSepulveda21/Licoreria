@@ -19,7 +19,7 @@ public class BrandCreatorImplShould {
         BrandsRepository brandsRepository = mock(BrandsRepository.class);
 
         BrandCreator creator = new BrandCreatorImpl(brandsRepository);
-        BrandRequest brandRequest = new BrandRequest(new BigDecimal("10"), "brand-nombre");
+        BrandRequest brandRequest = new BrandRequest(10L, "brand-nombre");
         creator.create(brandRequest);
     }
 

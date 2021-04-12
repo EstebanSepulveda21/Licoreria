@@ -20,7 +20,7 @@ public class BrandRepositoryImMemoryShould {
 
     @Test
     void save() throws Exception{
-        repository.save(new Brand(new BigDecimal("10"),"brand-nombre"));
+        repository.save(new Brand(10L,"brand-nombre"));
     }
 
     @Test

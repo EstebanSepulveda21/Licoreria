@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Builder
 public final class BrandRequest {
 
-    private BigDecimal codigo;
+    private Long codigo;
     private String nombre;
 
 }

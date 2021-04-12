@@ -17,19 +17,9 @@ import java.math.BigDecimal;
                 @UniqueConstraint(name = "uk_marcas_nombre",columnNames = "nombre")
         })
 public class Brand {
-
     @Id
-    @SequenceGenerator(
-            name = "brand_seq",
-            sequenceName ="brand_seq",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "brand_seq"
-    )
     @Column(name = "codigo")
-    private BigDecimal codigo;
+    private Long codigo;
 
     @Column(name = "nombre",
             nullable = false,
