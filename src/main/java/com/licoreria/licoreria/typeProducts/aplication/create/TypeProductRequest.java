@@ -10,7 +10,6 @@ import lombok.Getter;
 @Getter
 @Builder
 public final class TypeProductRequest {
-
     private Long codigo;
     private String tipo;
 }

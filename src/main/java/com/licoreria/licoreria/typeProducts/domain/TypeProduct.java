@@ -12,9 +12,7 @@ import javax.persistence.*;
 @Table(name = "tipos_productos",
         uniqueConstraints = {
                 @UniqueConstraint(name = "uk_tipos_productos_tipo",columnNames = "tipo")
-        })
-
-
+})
 public class TypeProduct {
 
     @Id
@@ -25,5 +23,4 @@ public class TypeProduct {
             columnDefinition = "varchar(50)"
     )
     private String tipo;
-
 }

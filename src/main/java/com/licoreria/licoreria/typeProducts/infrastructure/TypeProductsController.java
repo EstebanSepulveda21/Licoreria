@@ -1,6 +1,4 @@
 package com.licoreria.licoreria.typeProducts.infrastructure;
-
-
 import com.licoreria.licoreria.typeProducts.aplication.create.TypeProductRequest;
 import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import lombok.AllArgsConstructor;
@@ -12,11 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import com.licoreria.licoreria.typeProducts.domain.create.TypeProductCreator;
 
 import java.util.Optional;
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/v1/typeProducts")
-
 public class TypeProductsController {
 
     private final TypeProductCreator typeProductCreator;
@@ -57,9 +53,7 @@ public class TypeProductsController {
         httpHeaders.add("location", "/api/v1/typeProduct/"+codigo);
         return new ResponseEntity<>(httpHeaders, HttpStatus.OK);
     }
-
 }
-
 @Data
 final class Request
 {
