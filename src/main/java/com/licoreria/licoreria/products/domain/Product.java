@@ -1,7 +1,5 @@
 package com.licoreria.licoreria.products.domain;
 
-import com.licoreria.licoreria.brands.domain.Brand;
-import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,14 @@ import javax.persistence.*;
 @Table(name = "productos")
 public class Product
 {
+    //@ManyToOne
+    @Column(name = "tipos_productos_codigo")
+    private Long tiposProductosCodigo;
+    //------------------
+    //@ManyToOne
+    @Column(name = "marcas_codigo")
+    private Long marcasCodigo;
+    //------------------
     @Id
     @Column(name = "codigo")
     private Long codigo;
@@ -25,21 +31,5 @@ public class Product
     )
     private String nombre;
     //------------------
-    @ManyToOne
-    @JoinColumn
-            (
-                    foreignKey = @ForeignKey(name = "fk_productos_tipos_productos"),
-                    nullable = false
-            )
-    private TypeProduct tiposProductosCodigo;
-    //private Long tiposProductosCodigo;
-    //------------------
-    @ManyToOne
-    @JoinColumn
-            (
-                    foreignKey = @ForeignKey(name = "fk_productos_marcas"),
-                    nullable = false
-            )
-    private Brand marcasCodigo;
-    //private Long marcasCodigo;
+
 }

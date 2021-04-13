@@ -1,8 +1,5 @@
 package com.licoreria.licoreria.products.aplication.create;
 
-
-import com.licoreria.licoreria.brands.domain.Brand;
-import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +14,7 @@ public class ProductRequest
     private Long codigo;
     private String nombre;
 
-    private TypeProduct tiposProductosCodigo;
-    private Brand marcasCodigo;
+    private Long tiposProductosCodigo;
+    private Long marcasCodigo;
 
 }

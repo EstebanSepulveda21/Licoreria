@@ -18,8 +18,9 @@ public class ProductCreatorImpl implements ProductCreator
     @Override
     public void create(ProductRequest productRequest)
     {
-        Product product = new Product(productRequest.getCodigo(), productRequest.getNombre(),
-                productRequest.getTiposProductosCodigo(), productRequest.getMarcasCodigo());
+        Product product = new Product(productRequest.getTiposProductosCodigo(), productRequest.getMarcasCodigo(),
+                productRequest.getCodigo(), productRequest.getNombre()
+                );
 
         productsRepository.save(product);
     }
@@ -40,8 +41,9 @@ public class ProductCreatorImpl implements ProductCreator
         }
         else
         {
-            Product brand = new Product(productRequest.getCodigo(), productRequest.getNombre(),
-                    productRequest.getTiposProductosCodigo(), productRequest.getMarcasCodigo());
+            Product brand = new Product( productRequest.getTiposProductosCodigo(), productRequest.getMarcasCodigo(),productRequest.getCodigo(),
+                    productRequest.getNombre()
+                    );
 
             productsRepository.save(brand);
         }

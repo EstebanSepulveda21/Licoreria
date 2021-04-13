@@ -1,11 +1,8 @@
 package com.licoreria.licoreria.products.infrastructure;
 
-import com.licoreria.licoreria.brands.aplication.create.BrandRequest;
-import com.licoreria.licoreria.brands.domain.Brand;
 import com.licoreria.licoreria.products.aplication.create.ProductRequest;
 import com.licoreria.licoreria.products.domain.Product;
 import com.licoreria.licoreria.products.domain.create.ProductCreator;
-import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
@@ -78,9 +75,10 @@ public class ProductController
 @Data
 final class Request
 {
+    private Long tiposProductosCodigo;
+    private Long marcasCodigo;
     private Long codigo;
     private String nombre;
 
-    private TypeProduct tiposProductosCodigo;
-    private Brand marcasCodigo;
+
 }
