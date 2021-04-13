@@ -12,8 +12,6 @@ import java.math.BigDecimal;
 @Getter
 @Builder
 public final class BrandRequest {
-
     private Long codigo;
     private String nombre;
-
 }

@@ -17,7 +17,6 @@ public class BrandCreatorImplShould {
     @Test
     void created() throws Exception{
         BrandsRepository brandsRepository = mock(BrandsRepository.class);
-
         BrandCreator creator = new BrandCreatorImpl(brandsRepository);
         BrandRequest brandRequest = new BrandRequest(10L, "brand-nombre");
         creator.create(brandRequest);
