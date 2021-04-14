@@ -21,6 +21,14 @@ public class Product
     @Column(name = "marcas_codigo")
     private Long marcasCodigo;
     //------------------
+    //@ManyToOne
+    @Column(name = "pais_envios_codigo")
+    private Long paisEnviosCodigo;
+    //------------------
+    //@ManyToOne
+    @Column(name = "bodegas_codigo")
+    private Long bodegasCodigo;
+    //------------------
     @Id
     @Column(name = "codigo")
     private Long codigo;

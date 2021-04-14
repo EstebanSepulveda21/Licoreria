@@ -23,8 +23,13 @@ public class ProductController
     @PostMapping
     public ResponseEntity<HttpStatus> create(@RequestBody Request request)
     {
-        ProductRequest productSave = new ProductRequest(request.getCodigo(), request.getNombre(),
-                request.getTiposProductosCodigo(), request.getMarcasCodigo());
+        ProductRequest productSave = new ProductRequest(
+                request.getTiposProductosCodigo(),
+                request.getMarcasCodigo(),
+                request.getPaisEnviosCodigo(),
+                request.getBodegasCodigo(),
+                request.getCodigo(),
+                request.getNombre());
 
         productCreator.create(productSave);
 
@@ -52,8 +57,13 @@ public class ProductController
     @PutMapping("/{codigo}")
     public ResponseEntity<HttpStatus> update(@PathVariable("codigo") Long productCodigo, @RequestBody Request product) throws Exception
     {
-        ProductRequest productUpdate = new ProductRequest(product.getCodigo(), product.getNombre(),
-                product.getTiposProductosCodigo(), product.getMarcasCodigo());
+        ProductRequest productUpdate = new ProductRequest(
+                product.getTiposProductosCodigo(),
+                product.getMarcasCodigo(),
+                product.getPaisEnviosCodigo(),
+                product.getBodegasCodigo(),
+                product.getCodigo(),
+                product.getNombre());
 
         productCreator.update(productCodigo,productUpdate);
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -77,8 +87,8 @@ final class Request
 {
     private Long tiposProductosCodigo;
     private Long marcasCodigo;
+    private Long paisEnviosCodigo;
+    private Long bodegasCodigo;
     private Long codigo;
     private String nombre;
-
-
 }
