@@ -1,76 +1,84 @@
 CREATE TABLE marcas
 (
-	codigo NUMERIC(10,0) NOT null,
-	nombre VARCHAR(80) NOT null,
-	
-	CONSTRAINT pk_marcas PRIMARY KEY(codigo),
-	CONSTRAINT uk_marcas_nombre UNIQUE(nombre)
+    codigo NUMERIC(10,0) NOT null,
+    nombre VARCHAR(80) NOT null,
+
+    CONSTRAINT pk_marcas PRIMARY KEY(codigo),
+    CONSTRAINT uk_marcas_nombre UNIQUE(nombre)
 );
 
 CREATE TABLE tipos_productos
 (
-	codigo NUMERIC(10,0) NOT null,
-	tipo VARCHAR(50) NOT null,
-	
-	CONSTRAINT pk_tipos_productos PRIMARY KEY(codigo),
-	CONSTRAINT uk_tipos_productos_tipo UNIQUE(tipo)
+    codigo NUMERIC(10,0) NOT null,
+    tipo VARCHAR(50) NOT null,
+
+    CONSTRAINT pk_tipos_productos PRIMARY KEY(codigo),
+    CONSTRAINT uk_tipos_productos_tipo UNIQUE(tipo)
 );
 
-CREATE TABLE cabecera_facturas
+CREATE TABLE pais_envios
 (
-	numero_factura NUMERIC(10,0) NOT null,
-	fecha TIMESTAMP NOT null,
-	nombre_cliente VARCHAR(80) NOT null,
-	
-	CONSTRAINT pk_cabecera_facturas PRIMARY KEY(numero_factura)
+    codigo NUMERIC(5,0) NOT null,
+    nombre VARCHAR(150) NOT null,
+
+    CONSTRAINT pk_pais_envios PRIMARY KEY(codigo)
+);
+
+CREATE TABLE ciudades_ubicacion
+(
+    codigo NUMERIC(10,0) NOT null,
+    nombre VARCHAR(85) NOT null,
+
+    CONSTRAINT pk_ciudades_ubicacion PRIMARY KEY(codigo),
+    CONSTRAINT uk_ciudades_ubicacion_nombre UNIQUE(nombre)
+);
+
+CREATE TABLE bodegas
+(
+    --FK
+    ciudades_ubicacion NUMERIC(10,0),
+
+    codigo NUMERIC(5,0) NOT null,
+    capacidad_metros_cubicos NUMERIC(10,0) NOT null,
+
+    CONSTRAINT pk_bodegas PRIMARY KEY(codigo),
+    --CONSTRAINS FK
+    CONSTRAINT fk_bodegas_tipos_ciudades_ubicacion
+        FOREIGN KEY(ciudades_ubicacion)
+            REFERENCES ciudades_ubicacion(codigo)
 );
 
 CREATE TABLE productos
 (
-	--Fk
-	tipos_productos_codigo NUMERIC(10,0) NOT null,
-	marcas_codigo NUMERIC(10,0) NOT null,
-	--PK
-	codigo NUMERIC(10,0) NOT null,
-	--Otros
-	nombre 	VARCHAR(150) NOT null,
-	
-	
-	--CONSTRAINS FK
-	CONSTRAINT fk_productos_tipos_productos
-	FOREIGN KEY(tipos_productos_codigo)
-	REFERENCES tipos_productos(codigo),
-	
-	CONSTRAINT fk_productos_marcas
-	FOREIGN KEY(marcas_codigo)
-	REFERENCES marcas(codigo),
-	
-	--CONTRAINS PK
-	CONSTRAINT pk_productos PRIMARY KEY(codigo)
-	
-	
-);
+    --Fk
+    tipos_productos_codigo NUMERIC(10,0) NOT null,
+    marcas_codigo NUMERIC(10,0) NOT null,
+    pais_envios_codigo NUMERIC(5,0) NOT null,
+    bodegas_codigo NUMERIC(5,0) NOT null,
+    --PK
+    codigo NUMERIC(10,0) NOT null,
+    --Otros
+    nombre 	VARCHAR(150) NOT null,
 
-CREATE TABLE detalles_facturas
-(
-	--Fk y PK
-	cabecera_facturas_numero_factura NUMERIC(10,0) NOT null,
-	productos_codigo NUMERIC(10,0) NOT null,
-	
-	--Otros
-	cantidad_producto SMALLINT NOT null,
-	valor_unitario_producto NUMERIC(10,2) NOT null,
-	
-	--CONSTRAINS FK
-	CONSTRAINT fk_detalles_facturas_cabecera_facturas
-	FOREIGN KEY(cabecera_facturas_numero_factura)
-	REFERENCES cabecera_facturas(numero_factura),
-	
-	CONSTRAINT fk_detalles_facturas_productos
-	FOREIGN KEY(productos_codigo)
-	REFERENCES productos(codigo),
-	
-	--CONTRAINS PK
-	CONSTRAINT pk_detalles_facturas PRIMARY KEY(cabecera_facturas_numero_factura, productos_codigo)
-	
+
+    --CONSTRAINS FK
+    CONSTRAINT fk_productos_tipos_productos
+        FOREIGN KEY(tipos_productos_codigo)
+            REFERENCES tipos_productos(codigo),
+
+    CONSTRAINT fk_productos_marcas
+        FOREIGN KEY(marcas_codigo)
+            REFERENCES marcas(codigo),
+
+    CONSTRAINT fk_productos_paies_envios
+        FOREIGN KEY(pais_envios_codigo)
+            REFERENCES pais_envios(codigo),
+
+    CONSTRAINT fk_productos_bodegas
+        FOREIGN KEY(bodegas_codigo)
+            REFERENCES bodegas(codigo),
+
+    --CONTRAINS PK
+    CONSTRAINT pk_productos PRIMARY KEY(codigo)
+
 );
