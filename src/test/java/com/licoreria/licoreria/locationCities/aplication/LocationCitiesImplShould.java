@@ -30,11 +30,11 @@ public class LocationCitiesImplShould {
 
         LocationCitiesCreator creator = new LocationCitiesImpl(locationCitiesRepository, locationCitiesMapper);
 
-        LocationCitiesRequest locationCitiesRequest = new LocationCitiesRequest(10L, "brand-nombre");
+        LocationCitiesRequest locationCitiesRequest = new LocationCitiesRequest(10L, "location-nombre");
 
         when(locationCitiesMapper.requestToLocationCities(locationCitiesRequest))
                 .thenReturn(new LocationCities( new LocationCitiesCodigo( 10l),
-                        new LocationCitiesNombre("brand_nombre")));
+                        new LocationCitiesNombre("location_nombre")));
         creator.create(locationCitiesRequest);
     }
 

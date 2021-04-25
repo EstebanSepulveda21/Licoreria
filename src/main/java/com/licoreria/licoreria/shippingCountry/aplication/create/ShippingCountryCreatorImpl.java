@@ -5,6 +5,7 @@ import com.licoreria.licoreria.shared.domain.Service;
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountry;
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountryRepository;
 import com.licoreria.licoreria.shippingCountry.domain.create.ShippingCountryCreator;
+import com.licoreria.licoreria.shippingCountry.infrastructure.mapper.ShippingCountryMapper;
 import lombok.AllArgsConstructor;
 
 import java.util.Optional;
@@ -14,12 +15,13 @@ import java.util.Optional;
 public class ShippingCountryCreatorImpl implements ShippingCountryCreator
 {
     private final ShippingCountryRepository shippingCountryRepository;
+    private final ShippingCountryMapper shippingCountryMapper;
 
     @Override
     public void create(ShippingCountryRequest shippingCountryRequest)
     {
-        ShippingCountry shippingCountry = new ShippingCountry(shippingCountryRequest.getCodigo(),
-                shippingCountryRequest.getNombre());
+        ShippingCountry shippingCountry = shippingCountryMapper.requestToShippingCountry(shippingCountryRequest);
+        //ShippingCountry shippingCountry = new ShippingCountry(shippingCountryRequest.getCodigo(),shippingCountryRequest.getNombre());
 
         shippingCountryRepository.save(shippingCountry);
     }
@@ -40,8 +42,8 @@ public class ShippingCountryCreatorImpl implements ShippingCountryCreator
         }
         else
             {
-                ShippingCountry shippingCountry = new ShippingCountry(shippingCountryRequest.getCodigo(),
-                        shippingCountryRequest.getNombre());
+                ShippingCountry shippingCountry = shippingCountryMapper.requestToShippingCountry(shippingCountryRequest);
+               // ShippingCountry shippingCountry = new ShippingCountry(shippingCountryRequest.getCodigo(), shippingCountryRequest.getNombre());
                 shippingCountryRepository.save(shippingCountry);
             }
     }

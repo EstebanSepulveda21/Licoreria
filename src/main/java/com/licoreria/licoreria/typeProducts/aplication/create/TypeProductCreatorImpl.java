@@ -5,15 +5,19 @@ import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import com.licoreria.licoreria.typeProducts.domain.TypeProductRepository;
 import com.licoreria.licoreria.typeProducts.domain.create.TypeProductCreator;
 
+import com.licoreria.licoreria.typeProducts.infrastructure.mapper.TypeProductsMapper;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class TypeProductCreatorImpl implements TypeProductCreator {
     private final TypeProductRepository typeProductRepository;
+    private final TypeProductsMapper typeProductsMapper;
     @Override
     public void create(TypeProductRequest typeProductRequest) {
-        TypeProduct typeProduct = new TypeProduct(typeProductRequest.getCodigo(), typeProductRequest.getTipo());
+
+        TypeProduct typeProduct = typeProductsMapper.requestToTypeProduct(typeProductRequest);
+        //TypeProduct typeProduct = new TypeProduct(typeProductRequest.getCodigo(), typeProductRequest.getTipo());
         typeProductRepository.save(typeProduct);
     }
     @Override
@@ -26,7 +30,8 @@ public class TypeProductCreatorImpl implements TypeProductCreator {
         if(TypeProductUpdate.isEmpty()){
             throw new Exception("No existe el codigo: " + codigo);
         }else{
-            TypeProduct typeProduct = new TypeProduct(typeProductRequest.getCodigo(), typeProductRequest.getTipo());
+            TypeProduct typeProduct = typeProductsMapper.requestToTypeProduct(typeProductRequest);
+            //TypeProduct typeProduct = new TypeProduct(typeProductRequest.getCodigo(), typeProductRequest.getTipo());
             typeProductRepository.save(typeProduct);
         }
     }
