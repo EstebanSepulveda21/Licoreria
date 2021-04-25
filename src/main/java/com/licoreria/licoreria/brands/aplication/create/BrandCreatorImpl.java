@@ -33,7 +33,7 @@ public class BrandCreatorImpl implements BrandCreator {
         if(brandUpdate.isEmpty()){
             throw new Exception("No existe el codigo: " + codigo);
         }else{
-            Brand brand = new Brand(brandRequest.getCodigo(), brandRequest.getNombre());
+            Brand brand = brandMapper.requestToBrand(brandRequest);
             brandsRepository.save(brand);
         }
     }

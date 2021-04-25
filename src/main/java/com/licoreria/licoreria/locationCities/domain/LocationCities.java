@@ -1,7 +1,10 @@
 package com.licoreria.licoreria.locationCities.domain;
 
 
+import com.licoreria.licoreria.locationCities.domain.valueObjects.LocationCitiesCodigo;
+import com.licoreria.licoreria.locationCities.domain.valueObjects.LocationCitiesNombre;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +13,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name = "LocationCities")
 @Table(name = "ciudades_ubicacion",
         uniqueConstraints = {
@@ -17,12 +21,15 @@ import javax.persistence.*;
         })
 public class LocationCities
 {
-    @Id
+  /*  @Id
     @Column(name = "codigo")
-    private Long codigo;
+    private LocationCitiesCodigo codigo;
     @Column(name = "nombre",
             nullable = false,
             columnDefinition = "varchar(85)"
     )
-    private String nombre;
+    private LocationCitiesNombre nombre;*/
+
+    private LocationCitiesCodigo codigo;
+    private LocationCitiesNombre nombre;
 }

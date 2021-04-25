@@ -5,6 +5,7 @@ import com.licoreria.licoreria.brands.domain.Brand;
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
 import com.licoreria.licoreria.locationCities.domain.LocationCitiesRepository;
 import com.licoreria.licoreria.locationCities.domain.create.LocationCitiesCreator;
+import com.licoreria.licoreria.locationCities.infrastructure.mapper.LocationCitiesMapper;
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
 
@@ -15,13 +16,14 @@ import java.util.Optional;
 public class LocationCitiesImpl implements LocationCitiesCreator
 {
     private final LocationCitiesRepository locationCitiesRepository;
+    private final LocationCitiesMapper locationCitiesMapper;
 
     @Override
     public void create(LocationCitiesRequest locationCitiesRequest)
     {
-        LocationCities brand = new LocationCities(locationCitiesRequest.getCodigo(),
-                locationCitiesRequest.getNombre());
-        locationCitiesRepository.save(brand);
+        LocationCities locationCities = locationCitiesMapper.requestToLocationCities(locationCitiesRequest);
+        //LocationCities brand = new LocationCities(locationCitiesRequest.getCodigo(), locationCitiesRequest.getNombre());
+        locationCitiesRepository.save(locationCities);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class LocationCitiesImpl implements LocationCitiesCreator
         }
         else
         {
-            LocationCities locationCities = new LocationCities(locationCitiesRequest.getCodigo(), locationCitiesRequest.getNombre());
+            LocationCities locationCities = locationCitiesMapper.requestToLocationCities(locationCitiesRequest);
             locationCitiesRepository.save(locationCities);
         }
     }

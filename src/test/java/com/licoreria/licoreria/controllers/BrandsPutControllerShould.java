@@ -8,7 +8,7 @@ public class BrandsPutControllerShould extends RequestTestCase  {
     @Test
     public void create() throws Exception {
 
-        assertRequestWithBody("PUT",
+        assertRequestWithBody("POST",
                               "/api/v1/brands/" + UUID.randomUUID().toString(),
                               "{\"name\":\"UwUsoft\"}",
                               201);
