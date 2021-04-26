@@ -1,6 +1,10 @@
 package com.licoreria.licoreria.warehouse.domain;
 
+import com.licoreria.licoreria.warehouse.domain.valueObjects.WareHouseCapacidadMetrosCubicos;
+import com.licoreria.licoreria.warehouse.domain.valueObjects.WareHouseCiudadesUbicacion;
+import com.licoreria.licoreria.warehouse.domain.valueObjects.WareHouseCodigo;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,11 +16,12 @@ import javax.persistence.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name = "Warehouse")
 @Table(name = "bodegas")
 public class Warehouse
 {
-    //@ManyToOne
+ /*   //@ManyToOne
     @Column(name = "ciudades_ubicacion")
     private Long ciudadesUbicacion;
     //------------------
@@ -25,5 +30,9 @@ public class Warehouse
     private Long codigo;
     //------------------
     @Column(name = "capacidad_metros_cubicos")
-    private Long capacidadMetrosCubicos;
+    private Long capacidadMetrosCubicos;*/
+
+    private WareHouseCiudadesUbicacion ciudadesUbicacion;
+    private WareHouseCodigo codigo;
+    private WareHouseCapacidadMetrosCubicos capacidadMetrosCubicos;
 }

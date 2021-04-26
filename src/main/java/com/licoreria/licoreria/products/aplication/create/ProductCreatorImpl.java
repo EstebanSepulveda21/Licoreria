@@ -4,6 +4,7 @@ package com.licoreria.licoreria.products.aplication.create;
 import com.licoreria.licoreria.products.domain.Product;
 import com.licoreria.licoreria.products.domain.ProductsRepository;
 import com.licoreria.licoreria.products.domain.create.ProductCreator;
+import com.licoreria.licoreria.products.infrastructure.mapper.ProductMapper;
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
 
@@ -14,17 +15,12 @@ import java.util.Optional;
 public class ProductCreatorImpl implements ProductCreator
 {
     private final ProductsRepository productsRepository;
+    private final ProductMapper productMapper;
 
     @Override
     public void create(ProductRequest productRequest)
     {
-        Product product = new Product(productRequest.getTiposProductosCodigo(),
-                productRequest.getMarcasCodigo(),
-                productRequest.getPaisEnviosCodigo(),
-                productRequest.getBodegasCodigo(),
-                productRequest.getCodigo(), productRequest.getNombre()
-                );
-
+        Product product = productMapper.requestToProduct(productRequest);
         productsRepository.save(product);
     }
 
@@ -44,14 +40,7 @@ public class ProductCreatorImpl implements ProductCreator
         }
         else
         {
-            Product product = new Product( productRequest.getTiposProductosCodigo(),
-                    productRequest.getMarcasCodigo(),
-                    productRequest.getPaisEnviosCodigo(),
-                    productRequest.getBodegasCodigo(),
-                    productRequest.getCodigo(),
-                    productRequest.getNombre()
-                    );
-
+            Product product = productMapper.requestToProduct(productRequest);
             productsRepository.save(product);
         }
     }

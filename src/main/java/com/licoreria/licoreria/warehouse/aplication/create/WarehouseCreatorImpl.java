@@ -4,6 +4,7 @@ import com.licoreria.licoreria.shared.domain.Service;
 import com.licoreria.licoreria.warehouse.domain.Warehouse;
 import com.licoreria.licoreria.warehouse.domain.WarehouseRepository;
 import com.licoreria.licoreria.warehouse.domain.create.WarehouseCreator;
+import com.licoreria.licoreria.warehouse.infrastructure.mapper.WareHouseMapper;
 import lombok.AllArgsConstructor;
 
 import java.util.Optional;
@@ -13,15 +14,12 @@ import java.util.Optional;
 public class WarehouseCreatorImpl implements WarehouseCreator
 {
     private final WarehouseRepository warehouseRepository;
+    private final WareHouseMapper wareHouseMapper;
 
     @Override
     public void create(WarehouseRequest warehouseRequest)
     {
-        Warehouse warehouse = new Warehouse(
-                warehouseRequest.getCiudadesUbicacion(),
-                warehouseRequest.getCodigo(),
-                warehouseRequest.getCapacidadMetrosCubicos());
-
+        Warehouse warehouse = wareHouseMapper.requestToWareHouse(warehouseRequest);
         warehouseRepository.save(warehouse);
     }
 
@@ -42,11 +40,7 @@ public class WarehouseCreatorImpl implements WarehouseCreator
         }
         else
             {
-                Warehouse warehouse = new Warehouse(
-                        warehouseRequest.getCiudadesUbicacion(),
-                        warehouseRequest.getCodigo(),
-                        warehouseRequest.getCapacidadMetrosCubicos());
-
+                Warehouse warehouse = wareHouseMapper.requestToWareHouse(warehouseRequest);
                 warehouseRepository.save(warehouse);
             }
     }

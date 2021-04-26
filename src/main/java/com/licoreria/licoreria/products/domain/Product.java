@@ -1,6 +1,8 @@
 package com.licoreria.licoreria.products.domain;
 
+import com.licoreria.licoreria.products.domain.valueObjects.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,11 +11,12 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name = "Product")
 @Table(name = "productos")
 public class Product
 {
-    //@ManyToOne
+/*    //@ManyToOne
     @Column(name = "tipos_productos_codigo")
     private Long tiposProductosCodigo;
     //------------------
@@ -38,6 +41,11 @@ public class Product
             columnDefinition = "varchar(150)"
     )
     private String nombre;
-    //------------------
-
+    //------------------*/
+    private ProductTiposProductosCodigo tiposProductosCodigo;
+    private ProductMarcasCodigo marcasCodigo;
+    private ProductPaisEnviosCodigo paisEnviosCodigo;
+    private ProductBodegasCodigo bodegasCodigo;
+    private ProductCodigo codigo;
+    private ProductNombre nombre;
 }
