@@ -1,13 +1,5 @@
 package com.licoreria.licoreria.typeProduct.aplication;
 
-import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesImpl;
-import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesRequest;
-import com.licoreria.licoreria.locationCities.domain.LocationCities;
-import com.licoreria.licoreria.locationCities.domain.LocationCitiesRepository;
-import com.licoreria.licoreria.locationCities.domain.create.LocationCitiesCreator;
-import com.licoreria.licoreria.locationCities.domain.valueObjects.LocationCitiesCodigo;
-import com.licoreria.licoreria.locationCities.domain.valueObjects.LocationCitiesNombre;
-import com.licoreria.licoreria.locationCities.infrastructure.mapper.LocationCitiesMapper;
 import com.licoreria.licoreria.typeProducts.aplication.create.TypeProductCreatorImpl;
 import com.licoreria.licoreria.typeProducts.aplication.create.TypeProductRequest;
 import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
@@ -32,10 +24,10 @@ public class TypeProductImplShould {
 
         TypeProductCreator creator = new TypeProductCreatorImpl(typeProductRepository, typeProductsMapper);
 
-        TypeProductRequest typeProductRequest = new TypeProductRequest(10l, "type-nombre");
+        TypeProductRequest typeProductRequest = new TypeProductRequest(10L, "type-nombre");
 
         when(typeProductsMapper.requestToTypeProduct(typeProductRequest))
-                .thenReturn(new TypeProduct( new TypeProductCodigo( 10l),
+                .thenReturn(new TypeProduct( new TypeProductCodigo( 10L),
                         new TypeProductNombre("type_nombre")));
         creator.create(typeProductRequest);
     }

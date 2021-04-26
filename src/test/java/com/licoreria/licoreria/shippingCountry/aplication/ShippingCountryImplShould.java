@@ -1,13 +1,5 @@
 package com.licoreria.licoreria.shippingCountry.aplication;
 
-import com.licoreria.licoreria.brands.aplication.create.BrandCreatorImpl;
-import com.licoreria.licoreria.brands.aplication.create.BrandRequest;
-import com.licoreria.licoreria.brands.domain.Brand;
-import com.licoreria.licoreria.brands.domain.BrandsRepository;
-import com.licoreria.licoreria.brands.domain.create.BrandCreator;
-import com.licoreria.licoreria.brands.domain.valueObjects.BrandCodigo;
-import com.licoreria.licoreria.brands.domain.valueObjects.BrandNombre;
-import com.licoreria.licoreria.brands.infrastructure.mapper.BrandMapper;
 import com.licoreria.licoreria.shippingCountry.aplication.create.ShippingCountryCreatorImpl;
 import com.licoreria.licoreria.shippingCountry.aplication.create.ShippingCountryRequest;
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountry;
@@ -31,12 +23,12 @@ public class ShippingCountryImplShould {
         ShippingCountryMapper shippingCountryMapper = mock(ShippingCountryMapper.class);
 
         ShippingCountryCreator creator = new ShippingCountryCreatorImpl(shippingCountryRepository, shippingCountryMapper);
-        ShippingCountryRequest shippingCountryRequest = new ShippingCountryRequest( 10l , "shipping_nombre");
+        ShippingCountryRequest shippingCountryRequest = new ShippingCountryRequest( 10L , "shipping_nombre");
 
 
         when(shippingCountryMapper.requestToShippingCountry(shippingCountryRequest))
                 .thenReturn(new ShippingCountry(
-                        new ShippingCountryCodigo(10l), new ShippingCountryNombre("shipping-nombre")));
+                        new ShippingCountryCodigo(10L), new ShippingCountryNombre("shipping-nombre")));
         creator.create(shippingCountryRequest);
     }
 

@@ -10,9 +10,6 @@ import com.licoreria.licoreria.brands.domain.valueObjects.BrandNombre;
 import com.licoreria.licoreria.brands.infrastructure.mapper.BrandMapper;
 import org.junit.jupiter.api.Test;
 
-
-import java.math.BigDecimal;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -30,7 +27,7 @@ public class BrandCreatorImplShould {
 
        when(brandMapper.requestToBrand(brandRequest))
                 .thenReturn(new Brand(
-                        new BrandCodigo(10l), new BrandNombre("brand-nombre")));
+                        new BrandCodigo(10L), new BrandNombre("brand-nombre")));
         creator.create(brandRequest);
     }
 

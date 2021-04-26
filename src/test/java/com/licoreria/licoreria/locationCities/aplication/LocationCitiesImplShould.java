@@ -1,11 +1,6 @@
 package com.licoreria.licoreria.locationCities.aplication;
 
-import com.licoreria.licoreria.brands.aplication.create.BrandCreatorImpl;
-import com.licoreria.licoreria.brands.aplication.create.BrandRequest;
-import com.licoreria.licoreria.brands.domain.Brand;
-import com.licoreria.licoreria.brands.domain.BrandsRepository;
-import com.licoreria.licoreria.brands.domain.create.BrandCreator;
-import com.licoreria.licoreria.brands.infrastructure.mapper.BrandMapper;
+
 import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesImpl;
 import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesRequest;
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
@@ -33,7 +28,7 @@ public class LocationCitiesImplShould {
         LocationCitiesRequest locationCitiesRequest = new LocationCitiesRequest(10L, "location-nombre");
 
         when(locationCitiesMapper.requestToLocationCities(locationCitiesRequest))
-                .thenReturn(new LocationCities( new LocationCitiesCodigo( 10l),
+                .thenReturn(new LocationCities( new LocationCitiesCodigo(10L),
                         new LocationCitiesNombre("location_nombre")));
         creator.create(locationCitiesRequest);
     }
