@@ -1,7 +1,7 @@
 package com.licoreria.licoreria.brands.infrastructure;
 import com.licoreria.licoreria.brands.aplication.create.BrandRequest;
-import com.licoreria.licoreria.brands.domain.Brand;
 import com.licoreria.licoreria.brands.domain.create.BrandCreator;
+import com.licoreria.licoreria.brands.infrastructure.entities.BrandEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
@@ -28,14 +28,14 @@ public class BrandController
     }
     //Read
     @GetMapping("/{codigo}")
-    public ResponseEntity<Brand> brandById(@PathVariable("codigo") Long brandCodigo){
-        Optional<Brand> brandById = brandCreator.findBrandById(brandCodigo);
+    public ResponseEntity<BrandEntity> brandById(@PathVariable("codigo") Long brandCodigo){
+        Optional<BrandEntity> brandById = brandCreator.findBrandById(brandCodigo);
         if(brandById.isEmpty()){
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("location","/api/v1/brand/"+brandCodigo);
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Brand>(brandById.get(),HttpStatus.OK);
+        return new ResponseEntity<BrandEntity>(brandById.get(),HttpStatus.OK);
     }
     //Update
     @PutMapping("/{codigo}")
@@ -55,6 +55,7 @@ public class BrandController
         return new ResponseEntity<>(httpHeaders, HttpStatus.OK);
     }
 }
+
 @Data
 final class Request
 {

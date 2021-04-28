@@ -7,3 +7,4 @@ public class BrandNombre extends StringValueObjetc {
         super(value);
     }
 }
+

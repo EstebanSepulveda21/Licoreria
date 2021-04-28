@@ -1,5 +1,4 @@
 package com.licoreria.licoreria.typeProducts.infrastructure.mapper;
-
 import com.licoreria.licoreria.typeProducts.aplication.create.TypeProductRequest;
 import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import com.licoreria.licoreria.typeProducts.domain.valueObject.TypeProductCodigo;

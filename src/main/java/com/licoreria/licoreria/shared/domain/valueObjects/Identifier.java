@@ -2,6 +2,7 @@ package com.licoreria.licoreria.shared.domain.valueObjects;
 
 import lombok.Data;
 
+import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
 
