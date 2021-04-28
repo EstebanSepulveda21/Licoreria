@@ -1,8 +1,7 @@
 package com.licoreria.licoreria.locationCities.infrastructure;
 
 
-import com.licoreria.licoreria.brands.aplication.create.BrandRequest;
-import com.licoreria.licoreria.brands.domain.Brand;
+import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
 import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesRequest;
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
 import com.licoreria.licoreria.locationCities.domain.create.LocationCitiesCreator;
@@ -38,9 +37,9 @@ public class LocationCitiesController
 
     //Read
     @GetMapping("/{codigo}")
-    public ResponseEntity<LocationCities> locationCitiesById(@PathVariable("codigo") Long locationCitiesCodigo)
+    public ResponseEntity<LocationCitiesEntity> locationCitiesById(@PathVariable("codigo") Long locationCitiesCodigo)
     {
-        Optional<LocationCities> locationCitiesById =
+        Optional<LocationCitiesEntity> locationCitiesById =
                 locationCitiesCreator.findLocationCitiesById(locationCitiesCodigo);
         if(locationCitiesById.isEmpty())
         {
@@ -48,7 +47,7 @@ public class LocationCitiesController
             httpHeaders.add("location","/api/v1/locationCities/"+locationCitiesCodigo);
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<LocationCities>(locationCitiesById.get(),HttpStatus.OK);
+        return new ResponseEntity<LocationCitiesEntity>(locationCitiesById.get(),HttpStatus.OK);
     }
 
     //Update

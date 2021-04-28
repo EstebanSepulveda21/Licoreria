@@ -1,10 +1,9 @@
 package com.licoreria.licoreria.locationCities.aplication.create;
 
-
-import com.licoreria.licoreria.brands.domain.Brand;
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
 import com.licoreria.licoreria.locationCities.domain.LocationCitiesRepository;
 import com.licoreria.licoreria.locationCities.domain.create.LocationCitiesCreator;
+import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
 import com.licoreria.licoreria.locationCities.infrastructure.mapper.LocationCitiesMapper;
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
@@ -22,20 +21,19 @@ public class LocationCitiesImpl implements LocationCitiesCreator
     public void create(LocationCitiesRequest locationCitiesRequest)
     {
         LocationCities locationCities = locationCitiesMapper.requestToLocationCities(locationCitiesRequest);
-        //LocationCities brand = new LocationCities(locationCitiesRequest.getCodigo(), locationCitiesRequest.getNombre());
         locationCitiesRepository.save(locationCities);
     }
 
     @Override
-    public Optional<LocationCities> findLocationCitiesById(Long locationCitiesCodigo)
+    public Optional<LocationCitiesEntity> findLocationCitiesById(Long locationCitiesCodigo)
     {
-        return locationCitiesRepository.findById(locationCitiesCodigo);
+        return locationCitiesRepository.findLocationCitiesById(locationCitiesCodigo);
     }
 
     @Override
     public void update(Long codigo, LocationCitiesRequest locationCitiesRequest) throws Exception
     {
-        Optional<LocationCities> locationCitiesUpdate = findLocationCitiesById(codigo);
+        Optional<LocationCitiesEntity> locationCitiesUpdate = findLocationCitiesById(codigo);
         if(locationCitiesUpdate.isEmpty())
         {
             throw new Exception("No existe el codigo: " + codigo);
@@ -50,7 +48,7 @@ public class LocationCitiesImpl implements LocationCitiesCreator
     @Override
     public void deleteLocationCitiesById(Long locationCitiesCodigo) throws Exception
     {
-        Optional<LocationCities> locationCitiesDeleteById = findLocationCitiesById(locationCitiesCodigo);
+        Optional<LocationCitiesEntity> locationCitiesDeleteById = findLocationCitiesById(locationCitiesCodigo);
         if(locationCitiesDeleteById.isEmpty())
         {
 
