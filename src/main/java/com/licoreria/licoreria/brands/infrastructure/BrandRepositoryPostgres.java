@@ -4,10 +4,13 @@ import com.licoreria.licoreria.brands.domain.Brand;
 import com.licoreria.licoreria.brands.domain.BrandsRepository;
 import com.licoreria.licoreria.brands.infrastructure.entities.BrandEntity;
 import com.licoreria.licoreria.brands.infrastructure.mapper.BrandMapper;
+import com.licoreria.licoreria.shared.domain.Repository;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Optional;
 
+@Repository
 @AllArgsConstructor
 public class BrandRepositoryPostgres implements BrandsRepository {
 

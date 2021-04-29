@@ -1,4 +1,5 @@
 package com.licoreria.licoreria.typeProducts.infrastructure;
+import com.licoreria.licoreria.shared.domain.Repository;
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountry;
 import com.licoreria.licoreria.shippingCountry.infrastructure.entities.ShippingCountryEntity;
 import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.Optional;
 
+@Repository
 @AllArgsConstructor
 public class TypeProductsPostgres implements TypeProductRepository {
 

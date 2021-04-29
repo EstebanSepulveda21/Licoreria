@@ -7,7 +7,6 @@ import com.licoreria.licoreria.brands.infrastructure.entities.BrandEntity;
 import com.licoreria.licoreria.brands.infrastructure.mapper.BrandMapper;
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
-
 import java.util.Optional;
 
 @Service

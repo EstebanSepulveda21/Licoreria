@@ -18,7 +18,6 @@ import javax.persistence.*;
         })
 
 public class BrandEntity {
-
     @Id
     @Column(name = "codigo")
     private Long codigo;
@@ -27,6 +26,4 @@ public class BrandEntity {
             columnDefinition = "varchar(80)"
     )
     private String nombre;
-
-
 }

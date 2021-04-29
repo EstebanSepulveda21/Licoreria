@@ -4,10 +4,12 @@ import com.licoreria.licoreria.products.domain.Product;
 import com.licoreria.licoreria.products.domain.ProductsRepository;
 import com.licoreria.licoreria.products.infrastructure.entities.ProductEntity;
 import com.licoreria.licoreria.products.infrastructure.mapper.ProductMapper;
+import com.licoreria.licoreria.shared.domain.Repository;
 import lombok.AllArgsConstructor;
 
 import java.util.Optional;
 
+@Repository
 @AllArgsConstructor
 public class ProductRepositoryPostgres implements ProductsRepository {
 

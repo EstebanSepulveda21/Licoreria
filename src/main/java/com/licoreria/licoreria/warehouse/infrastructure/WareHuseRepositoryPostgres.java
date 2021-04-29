@@ -1,5 +1,6 @@
 package com.licoreria.licoreria.warehouse.infrastructure;
 
+import com.licoreria.licoreria.shared.domain.Repository;
 import com.licoreria.licoreria.warehouse.domain.Warehouse;
 import com.licoreria.licoreria.warehouse.domain.WarehouseRepository;
 import com.licoreria.licoreria.warehouse.infrastructure.entities.WareHouseEntity;
@@ -7,6 +8,7 @@ import com.licoreria.licoreria.warehouse.infrastructure.mapper.WareHouseMapper;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
 
+@Repository
 @AllArgsConstructor
 public class WareHuseRepositoryPostgres implements WarehouseRepository {
 

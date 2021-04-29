@@ -1,6 +1,7 @@
 package com.licoreria.licoreria.shippingCountry.infrastructure;
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
 import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
+import com.licoreria.licoreria.shared.domain.Repository;
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountry;
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountryRepository;
 import com.licoreria.licoreria.shippingCountry.infrastructure.entities.ShippingCountryEntity;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.Optional;
 
+@Repository
 @AllArgsConstructor
 public class ShippingCountryPostgres implements ShippingCountryRepository {
 
