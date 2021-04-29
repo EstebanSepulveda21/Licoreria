@@ -1,6 +1,7 @@
 package com.licoreria.licoreria.typeProducts.infrastructure;
 import com.licoreria.licoreria.typeProducts.aplication.create.TypeProductRequest;
 import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
+import com.licoreria.licoreria.typeProducts.infrastructure.entities.TypeProductsEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
@@ -27,14 +28,14 @@ public class TypeProductsController {
     }
     //Read
     @GetMapping("/{codigo}")
-    public ResponseEntity<TypeProduct> typeProductById(@PathVariable("codigo") Long typeProductCodigo){
-        Optional<TypeProduct> typeProductById = typeProductCreator.findTypeProductById(typeProductCodigo);
+    public ResponseEntity<TypeProductsEntity> typeProductById(@PathVariable("codigo") Long typeProductCodigo){
+        Optional<TypeProductsEntity> typeProductById = typeProductCreator.findTypeProductById(typeProductCodigo);
         if(typeProductById.isEmpty()){
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("location","/api/v1/typeProduct/"+typeProductCodigo);
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<TypeProduct>(typeProductById.get(),HttpStatus.OK);
+        return new ResponseEntity<TypeProductsEntity>(typeProductById.get(),HttpStatus.OK);
     }
     //Update
     @PutMapping("/{codigo}")

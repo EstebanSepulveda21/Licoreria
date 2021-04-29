@@ -1,8 +1,5 @@
 package com.licoreria.licoreria.locationCities.infrastructure.mapper;
 
-
-import com.licoreria.licoreria.brands.domain.Brand;
-import com.licoreria.licoreria.brands.infrastructure.entities.BrandEntity;
 import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesRequest;
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
 import com.licoreria.licoreria.locationCities.domain.valueObjects.LocationCitiesCodigo;

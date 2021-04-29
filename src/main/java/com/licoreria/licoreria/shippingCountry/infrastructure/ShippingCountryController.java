@@ -7,6 +7,7 @@ import com.licoreria.licoreria.shippingCountry.aplication.create.ShippingCountry
 
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountry;
 import com.licoreria.licoreria.shippingCountry.domain.create.ShippingCountryCreator;
+import com.licoreria.licoreria.shippingCountry.infrastructure.entities.ShippingCountryEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
@@ -37,16 +38,16 @@ public class ShippingCountryController
 
     //Read
     @GetMapping("/{codigo}")
-    public ResponseEntity<ShippingCountry> shippingCountryById(@PathVariable("codigo") Long shippingCountryCodigo)
+    public ResponseEntity<ShippingCountryEntity> shippingCountryById(@PathVariable("codigo") Long shippingCountryCodigo)
     {
-        Optional<ShippingCountry> shippingCountrById = shippingCountryCreator.findShippingCountryById(shippingCountryCodigo);
+        Optional<ShippingCountryEntity> shippingCountrById = shippingCountryCreator.findShippingCountryById(shippingCountryCodigo);
         if(shippingCountrById.isEmpty())
         {
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("location","/api/v1/shippingCountry/"+shippingCountryCodigo);
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<ShippingCountry>(shippingCountrById.get(),HttpStatus.OK);
+        return new ResponseEntity<ShippingCountryEntity>(shippingCountrById.get(),HttpStatus.OK);
     }
 
     //Update

@@ -5,6 +5,7 @@ import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import com.licoreria.licoreria.typeProducts.domain.TypeProductRepository;
 import com.licoreria.licoreria.typeProducts.domain.create.TypeProductCreator;
 
+import com.licoreria.licoreria.typeProducts.infrastructure.entities.TypeProductsEntity;
 import com.licoreria.licoreria.typeProducts.infrastructure.mapper.TypeProductsMapper;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
@@ -17,27 +18,25 @@ public class TypeProductCreatorImpl implements TypeProductCreator {
     public void create(TypeProductRequest typeProductRequest) {
 
         TypeProduct typeProduct = typeProductsMapper.requestToTypeProduct(typeProductRequest);
-        //TypeProduct typeProduct = new TypeProduct(typeProductRequest.getCodigo(), typeProductRequest.getTipo());
         typeProductRepository.save(typeProduct);
     }
     @Override
-    public Optional<TypeProduct> findTypeProductById(Long TypeProductID) {
-        return typeProductRepository.findById(TypeProductID);
+    public Optional<TypeProductsEntity> findTypeProductById(Long TypeProductID) {
+        return typeProductRepository.findTypeProductsById(TypeProductID);
     }
     @Override
     public void update(Long codigo, TypeProductRequest typeProductRequest)throws Exception {
-        Optional<TypeProduct> TypeProductUpdate = findTypeProductById(codigo);
+        Optional<TypeProductsEntity> TypeProductUpdate = findTypeProductById(codigo);
         if(TypeProductUpdate.isEmpty()){
             throw new Exception("No existe el codigo: " + codigo);
         }else{
             TypeProduct typeProduct = typeProductsMapper.requestToTypeProduct(typeProductRequest);
-            //TypeProduct typeProduct = new TypeProduct(typeProductRequest.getCodigo(), typeProductRequest.getTipo());
             typeProductRepository.save(typeProduct);
         }
     }
     @Override
     public void deleteTypeProductById(Long TypeProductCodigo) throws Exception {
-        Optional<TypeProduct> typeProductDeleteById = findTypeProductById(TypeProductCodigo);
+        Optional<TypeProductsEntity> typeProductDeleteById = findTypeProductById(TypeProductCodigo);
         if(typeProductDeleteById.isEmpty()){
             throw new Exception("No existe el codigo: " + TypeProductCodigo);
         }else{

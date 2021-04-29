@@ -13,7 +13,7 @@ public interface LocationCitiesRepository
 
     Optional<LocationCitiesEntity> findLocationCitiesById(Long codigo);
 
-    void delete(LocationCitiesEntity brand);
+    void delete(LocationCitiesEntity locationCities);
 
 
 }
