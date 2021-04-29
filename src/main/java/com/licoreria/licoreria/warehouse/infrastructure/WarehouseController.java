@@ -3,6 +3,7 @@ package com.licoreria.licoreria.warehouse.infrastructure;
 import com.licoreria.licoreria.warehouse.aplication.create.WarehouseRequest;
 import com.licoreria.licoreria.warehouse.domain.Warehouse;
 import com.licoreria.licoreria.warehouse.domain.create.WarehouseCreator;
+import com.licoreria.licoreria.warehouse.infrastructure.entities.WareHouseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
@@ -38,9 +39,9 @@ public class WarehouseController
 
     //Read
     @GetMapping("/{codigo}")
-    public ResponseEntity<Warehouse> warehouseById(@PathVariable("codigo") Long warehouseCodigo)
+    public ResponseEntity<WareHouseEntity> warehouseById(@PathVariable("codigo") Long warehouseCodigo)
     {
-        Optional<Warehouse> warehouseById = warehouseCreator.findWarehouseById(warehouseCodigo);
+        Optional<WareHouseEntity> warehouseById = warehouseCreator.findWarehouseById(warehouseCodigo);
 
         if(warehouseById.isEmpty())
         {
@@ -48,7 +49,7 @@ public class WarehouseController
             httpHeaders.add("location","/api/v1/warehouse/"+warehouseCodigo);
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Warehouse>(warehouseById.get(),HttpStatus.OK);
+        return new ResponseEntity<>(warehouseById.get(),HttpStatus.OK);
     }
 
     //Update

@@ -4,6 +4,7 @@ import com.licoreria.licoreria.shared.domain.Service;
 import com.licoreria.licoreria.warehouse.domain.Warehouse;
 import com.licoreria.licoreria.warehouse.domain.WarehouseRepository;
 import com.licoreria.licoreria.warehouse.domain.create.WarehouseCreator;
+import com.licoreria.licoreria.warehouse.infrastructure.entities.WareHouseEntity;
 import com.licoreria.licoreria.warehouse.infrastructure.mapper.WareHouseMapper;
 import lombok.AllArgsConstructor;
 
@@ -24,39 +25,33 @@ public class WarehouseCreatorImpl implements WarehouseCreator
     }
 
     @Override
-    public Optional<Warehouse> findWarehouseById(Long warehouseCodigo)
+    public Optional<WareHouseEntity> findWarehouseById(Long warehouseCodigo)
     {
-        return warehouseRepository.findById(warehouseCodigo);
+        return warehouseRepository.findWarehouseById(warehouseCodigo);
     }
 
     @Override
     public void update(Long codigo, WarehouseRequest warehouseRequest) throws Exception
     {
-        Optional<Warehouse> warehouseUpdate = findWarehouseById(codigo);
-
-        if(warehouseUpdate.isEmpty())
-        {
+        Optional<WareHouseEntity> warehouseUpdate = findWarehouseById(codigo);
+        if(warehouseUpdate.isEmpty()) {
             throw new Exception("No existe el codigo: " + codigo);
         }
-        else
-            {
-                Warehouse warehouse = wareHouseMapper.requestToWareHouse(warehouseRequest);
-                warehouseRepository.save(warehouse);
-            }
+        else {
+            Warehouse warehouse = wareHouseMapper.requestToWareHouse(warehouseRequest);
+            warehouseRepository.save(warehouse);
+        }
     }
 
     @Override
     public void deleteWarehouseById(Long warehouseCodigo) throws Exception
     {
-        Optional<Warehouse> warehouseDelete = findWarehouseById(warehouseCodigo);
-
-        if(warehouseDelete.isEmpty())
-        {
+        Optional<WareHouseEntity> warehouseDelete = findWarehouseById(warehouseCodigo);
+        if(warehouseDelete.isEmpty()) {
             throw new Exception("No existe el codigo: " + warehouseDelete);
         }
-        else
-            {
-                warehouseRepository.delete(warehouseDelete.get());
-            }
+        else {
+            warehouseRepository.delete(warehouseDelete.get());
+        }
     }
 }

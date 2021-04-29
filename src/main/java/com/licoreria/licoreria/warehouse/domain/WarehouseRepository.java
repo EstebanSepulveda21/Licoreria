@@ -1,8 +1,10 @@
 package com.licoreria.licoreria.warehouse.domain;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.licoreria.licoreria.warehouse.infrastructure.entities.WareHouseEntity;
+import java.util.Optional;
 
-public interface WarehouseRepository extends JpaRepository<Warehouse, Long>
-{
-
+public interface WarehouseRepository {
+    void save(Warehouse warehouse);
+    Optional<WareHouseEntity> findWarehouseById(Long codigo);
+    void delete(WareHouseEntity wareHouseEntity);
 }

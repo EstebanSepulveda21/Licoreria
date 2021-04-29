@@ -4,6 +4,7 @@ package com.licoreria.licoreria.products.aplication.create;
 import com.licoreria.licoreria.products.domain.Product;
 import com.licoreria.licoreria.products.domain.ProductsRepository;
 import com.licoreria.licoreria.products.domain.create.ProductCreator;
+import com.licoreria.licoreria.products.infrastructure.entities.ProductEntity;
 import com.licoreria.licoreria.products.infrastructure.mapper.ProductMapper;
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
@@ -25,15 +26,15 @@ public class ProductCreatorImpl implements ProductCreator
     }
 
     @Override
-    public Optional<Product> findProductById(Long productCodigo)
+    public Optional<ProductEntity> findProductById(Long productCodigo)
     {
-        return productsRepository.findById(productCodigo);
+        return productsRepository.findProductById(productCodigo);
     }
 
     @Override
     public void update(Long codigo, ProductRequest productRequest) throws Exception
     {
-        Optional<Product> productUpdate = findProductById(codigo);
+        Optional<ProductEntity> productUpdate = findProductById(codigo);
         if(productUpdate.isEmpty())
         {
             throw new Exception("No existe el codigo: " + codigo);
@@ -48,7 +49,7 @@ public class ProductCreatorImpl implements ProductCreator
     @Override
     public void deleteProductById(Long productCodigo) throws Exception
     {
-        Optional<Product> productDelete = findProductById(productCodigo);
+        Optional<ProductEntity> productDelete = findProductById(productCodigo);
         if(productDelete.isEmpty())
         {
             throw new Exception("No existe el codigo: " + productDelete);

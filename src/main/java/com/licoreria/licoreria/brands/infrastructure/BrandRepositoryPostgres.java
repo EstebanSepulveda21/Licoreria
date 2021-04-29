@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 public class BrandRepositoryPostgres implements BrandsRepository {
+
     private final BrandRepositoryJPA brandRepositoryJPA;
     private final BrandMapper brandMapper;
 

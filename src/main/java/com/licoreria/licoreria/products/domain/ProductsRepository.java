@@ -1,8 +1,10 @@
 package com.licoreria.licoreria.products.domain;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.licoreria.licoreria.products.infrastructure.entities.ProductEntity;
+import java.util.Optional;
 
-public interface ProductsRepository extends JpaRepository<Product, Long>
-{
-
+public interface ProductsRepository {
+    void save(Product product);
+    Optional<ProductEntity> findProductById(Long codigo);
+    void delete(ProductEntity productEntity);
 }

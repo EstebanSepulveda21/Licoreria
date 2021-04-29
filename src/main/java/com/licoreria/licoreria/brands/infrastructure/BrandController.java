@@ -55,7 +55,6 @@ public class BrandController
         return new ResponseEntity<>(httpHeaders, HttpStatus.OK);
     }
 }
-
 @Data
 final class Request
 {

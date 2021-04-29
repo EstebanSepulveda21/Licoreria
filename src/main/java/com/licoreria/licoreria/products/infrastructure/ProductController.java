@@ -3,6 +3,7 @@ package com.licoreria.licoreria.products.infrastructure;
 import com.licoreria.licoreria.products.aplication.create.ProductRequest;
 import com.licoreria.licoreria.products.domain.Product;
 import com.licoreria.licoreria.products.domain.create.ProductCreator;
+import com.licoreria.licoreria.products.infrastructure.entities.ProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
@@ -40,17 +41,14 @@ public class ProductController
 
     //Read
     @GetMapping("/{codigo}")
-    public ResponseEntity<Product> brandById(@PathVariable("codigo") Long productCodigo)
-    {
-        Optional<Product> productById = productCreator.findProductById(productCodigo);
-
-        if(productById.isEmpty())
-        {
+    public ResponseEntity<ProductEntity> brandById(@PathVariable("codigo") Long productCodigo){
+        Optional<ProductEntity> productById = productCreator.findProductById(productCodigo);
+        if(productById.isEmpty()) {
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("location","/api/v1/product/"+productCodigo);
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Product>(productById.get(),HttpStatus.OK);
+        return new ResponseEntity<>(productById.get(),HttpStatus.OK);
     }
 
     //Update
