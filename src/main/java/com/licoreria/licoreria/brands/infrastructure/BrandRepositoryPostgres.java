@@ -8,6 +8,7 @@ import com.licoreria.licoreria.shared.domain.Repository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -28,5 +29,10 @@ public class BrandRepositoryPostgres implements BrandsRepository {
     @Override
     public void delete(BrandEntity brand) {
         brandRepositoryJPA.deleteById(brand.getCodigo());
+    }
+
+    @Override
+    public List<BrandEntity> getAll() {
+        return brandRepositoryJPA.findAll();
     }
 }

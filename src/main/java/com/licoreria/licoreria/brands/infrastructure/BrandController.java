@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,6 +37,10 @@ public class BrandController
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<BrandEntity>(brandById.get(),HttpStatus.OK);
+    }
+    @GetMapping
+    public ResponseEntity<List<BrandEntity>> getAll(){
+        return ResponseEntity.ok().body(this.brandCreator.getAll());
     }
     //Update
     @PutMapping("/{codigo}")

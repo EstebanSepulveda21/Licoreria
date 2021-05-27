@@ -7,6 +7,8 @@ import com.licoreria.licoreria.brands.infrastructure.entities.BrandEntity;
 import com.licoreria.licoreria.brands.infrastructure.mapper.BrandMapper;
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +27,11 @@ public class BrandCreatorImpl implements BrandCreator {
     @Override
     public Optional<BrandEntity> findBrandById(Long brandId) {
         return brandsRepository.findBrandById(brandId);
+    }
+
+    @Override
+    public List<BrandEntity> getAll() {
+        return brandsRepository.getAll();
     }
 
     @Override
