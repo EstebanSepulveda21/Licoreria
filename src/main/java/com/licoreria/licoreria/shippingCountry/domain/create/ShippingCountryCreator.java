@@ -4,6 +4,7 @@ import com.licoreria.licoreria.shippingCountry.aplication.create.ShippingCountry
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountry;
 import com.licoreria.licoreria.shippingCountry.infrastructure.entities.ShippingCountryEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ShippingCountryCreator
@@ -12,4 +13,5 @@ public interface ShippingCountryCreator
     Optional<ShippingCountryEntity> findShippingCountryById(Long shippingCountryCodigo);
     void update(Long codigo, ShippingCountryRequest shippingCountryRequest) throws Exception;
     void deleteShippingCountryById(Long shippingCountryCodigo) throws Exception;
+    List<ShippingCountryEntity> getAll();
 }

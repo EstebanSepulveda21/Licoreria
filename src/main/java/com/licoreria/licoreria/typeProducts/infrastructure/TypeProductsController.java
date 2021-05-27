@@ -1,4 +1,5 @@
 package com.licoreria.licoreria.typeProducts.infrastructure;
+import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
 import com.licoreria.licoreria.typeProducts.aplication.create.TypeProductRequest;
 import com.licoreria.licoreria.typeProducts.domain.TypeProduct;
 import com.licoreria.licoreria.typeProducts.infrastructure.entities.TypeProductsEntity;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.licoreria.licoreria.typeProducts.domain.create.TypeProductCreator;
 
+import java.util.List;
 import java.util.Optional;
 @RestController
 @AllArgsConstructor
@@ -36,6 +38,11 @@ public class TypeProductsController {
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<TypeProductsEntity>(typeProductById.get(),HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TypeProductsEntity>> getAll(){
+        return ResponseEntity.ok().body(this.typeProductCreator.getAll());
     }
     //Update
     @PutMapping("/{codigo}")

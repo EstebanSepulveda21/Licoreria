@@ -8,6 +8,7 @@ import com.licoreria.licoreria.shippingCountry.infrastructure.entities.ShippingC
 import com.licoreria.licoreria.shippingCountry.infrastructure.mapper.ShippingCountryMapper;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -29,6 +30,11 @@ public class ShippingCountryPostgres implements ShippingCountryRepository {
     @Override
     public void delete(ShippingCountryEntity shippingCountryEntity) {
         shippingCountryRepositoryJPA.deleteById(shippingCountryEntity.getCodigo());
+    }
+
+    @Override
+    public List<ShippingCountryEntity> getAll() {
+        return shippingCountryRepositoryJPA.findAll();
     }
 
 

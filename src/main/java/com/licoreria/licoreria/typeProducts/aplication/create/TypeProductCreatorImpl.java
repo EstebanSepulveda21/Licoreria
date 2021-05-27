@@ -8,6 +8,8 @@ import com.licoreria.licoreria.typeProducts.domain.create.TypeProductCreator;
 import com.licoreria.licoreria.typeProducts.infrastructure.entities.TypeProductsEntity;
 import com.licoreria.licoreria.typeProducts.infrastructure.mapper.TypeProductsMapper;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 import java.util.Optional;
 @Service
 @AllArgsConstructor
@@ -42,5 +44,10 @@ public class TypeProductCreatorImpl implements TypeProductCreator {
         }else{
             typeProductRepository.delete(typeProductDeleteById.get());
         }
+    }
+
+    @Override
+    public List<TypeProductsEntity> getAll() {
+        return typeProductRepository.getAll();
     }
 }

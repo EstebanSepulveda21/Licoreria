@@ -9,6 +9,7 @@ import com.licoreria.licoreria.shippingCountry.infrastructure.entities.ShippingC
 import com.licoreria.licoreria.shippingCountry.infrastructure.mapper.ShippingCountryMapper;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -58,5 +59,10 @@ public class ShippingCountryCreatorImpl implements ShippingCountryCreator
             {
                 shippingCountryRepository.delete(shippingCountryById.get());
             }
+    }
+
+    @Override
+    public List<ShippingCountryEntity> getAll() {
+        return shippingCountryRepository.getAll();
     }
 }

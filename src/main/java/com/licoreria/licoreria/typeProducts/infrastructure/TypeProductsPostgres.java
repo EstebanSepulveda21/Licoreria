@@ -8,6 +8,7 @@ import com.licoreria.licoreria.typeProducts.infrastructure.entities.TypeProducts
 import com.licoreria.licoreria.typeProducts.infrastructure.mapper.TypeProductsMapper;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -28,5 +29,10 @@ public class TypeProductsPostgres implements TypeProductRepository {
     @Override
     public void delete(TypeProductsEntity typeProductsEntity) {
         typeProductsRepositoryJPA.deleteById(typeProductsEntity.getCodigo());
+    }
+
+    @Override
+    public List<TypeProductsEntity> getAll() {
+        return typeProductsRepositoryJPA.findAll();
     }
 }

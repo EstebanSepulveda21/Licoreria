@@ -6,6 +6,7 @@ import com.licoreria.licoreria.shippingCountry.infrastructure.entities.ShippingC
 import com.licoreria.licoreria.typeProducts.infrastructure.entities.TypeProductsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface TypeProductRepository  {
@@ -16,4 +17,5 @@ public interface TypeProductRepository  {
 
     void delete(TypeProductsEntity typeProducts);
 
+    List<TypeProductsEntity> getAll();
 }

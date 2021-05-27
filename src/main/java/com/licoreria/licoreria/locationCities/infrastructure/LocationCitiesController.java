@@ -53,7 +53,7 @@ public class LocationCitiesController
     }
 
     @GetMapping
-    public ResponseEntity<List<BrandEntity>> getAll(){
+    public ResponseEntity<List<LocationCitiesEntity>> getAll(){
         return ResponseEntity.ok().body(this.locationCitiesCreator.getAll());
     }
 

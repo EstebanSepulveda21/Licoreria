@@ -8,6 +8,7 @@ import com.licoreria.licoreria.locationCities.infrastructure.mapper.LocationCiti
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -58,5 +59,10 @@ public class LocationCitiesImpl implements LocationCitiesCreator
         {
             locationCitiesRepository.delete(locationCitiesDeleteById.get());
         }
+    }
+
+    @Override
+    public List<LocationCitiesEntity> getAll() {
+        return locationCitiesRepository.getAll();
     }
 }

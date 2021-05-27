@@ -3,6 +3,7 @@ package com.licoreria.licoreria.shippingCountry.infrastructure;
 
 
 import com.licoreria.licoreria.brands.aplication.create.BrandRequest;
+import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
 import com.licoreria.licoreria.shippingCountry.aplication.create.ShippingCountryRequest;
 
 import com.licoreria.licoreria.shippingCountry.domain.ShippingCountry;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -50,6 +52,10 @@ public class ShippingCountryController
         return new ResponseEntity<ShippingCountryEntity>(shippingCountrById.get(),HttpStatus.OK);
     }
 
+    @GetMapping
+    public ResponseEntity<List<ShippingCountryEntity>> getAll(){
+        return ResponseEntity.ok().body(this.shippingCountryCreator.getAll());
+    }
     //Update
     @PutMapping("/{codigo}")
     public ResponseEntity<HttpStatus> update(@PathVariable("codigo") Long shippingCountryCodigo, @RequestBody Request shippingCountry) throws Exception
