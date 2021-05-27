@@ -7,6 +7,7 @@ import com.licoreria.licoreria.locationCities.infrastructure.mapper.LocationCiti
 import com.licoreria.licoreria.shared.domain.Repository;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -21,12 +22,19 @@ public class LocationCitiesPostgres implements LocationCitiesRepository{
         locationCitiesRepositoryJPA.save(locationCitiesMapper.locationCitiesToLocationCities(locationCities));
     }
 
+
+
     @Override
     public Optional<LocationCitiesEntity> findLocationCitiesById(Long codigo){return locationCitiesRepositoryJPA.findById(codigo);}
 
     @Override
     public void delete(LocationCitiesEntity locationCitiesEntity) {
         locationCitiesRepositoryJPA.deleteById(locationCitiesEntity.getCodigo());
+    }
+
+    @Override
+    public List<LocationCitiesEntity> getAll() {
+        return locationCitiesRepositoryJPA.findAll();
     }
 
 }

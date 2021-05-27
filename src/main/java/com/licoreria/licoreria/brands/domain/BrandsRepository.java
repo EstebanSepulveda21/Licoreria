@@ -10,7 +10,6 @@ public interface BrandsRepository  {
     void save(Brand brand);
     Optional<BrandEntity> findBrandById(Long codigo);
     void delete(BrandEntity brand);
-
     List<BrandEntity> getAll();
 
 }

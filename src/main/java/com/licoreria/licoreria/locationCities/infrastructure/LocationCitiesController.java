@@ -1,6 +1,7 @@
 package com.licoreria.licoreria.locationCities.infrastructure;
 
 
+import com.licoreria.licoreria.brands.infrastructure.entities.BrandEntity;
 import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
 import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesRequest;
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -48,6 +50,11 @@ public class LocationCitiesController
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<LocationCitiesEntity>(locationCitiesById.get(),HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<BrandEntity>> getAll(){
+        return ResponseEntity.ok().body(this.locationCitiesCreator.getAll());
     }
 
     //Update

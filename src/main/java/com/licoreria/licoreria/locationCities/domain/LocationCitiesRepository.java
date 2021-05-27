@@ -5,6 +5,7 @@ import com.licoreria.licoreria.brands.infrastructure.entities.BrandEntity;
 import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface LocationCitiesRepository
@@ -15,5 +16,5 @@ public interface LocationCitiesRepository
 
     void delete(LocationCitiesEntity locationCities);
 
-
+    List<LocationCitiesEntity> getAll();
 }

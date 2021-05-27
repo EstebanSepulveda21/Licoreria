@@ -4,6 +4,7 @@ import com.licoreria.licoreria.locationCities.aplication.create.LocationCitiesRe
 import com.licoreria.licoreria.locationCities.domain.LocationCities;
 import com.licoreria.licoreria.locationCities.infrastructure.entities.LocationCitiesEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface LocationCitiesCreator
@@ -12,4 +13,5 @@ public interface LocationCitiesCreator
     Optional<LocationCitiesEntity> findLocationCitiesById(Long locationCitiesCodigo);
     void update(Long codigo, LocationCitiesRequest locationCitiesRequest) throws Exception;
     void deleteLocationCitiesById(Long locationCitiesCodigo) throws Exception;
+    List<LocationCitiesEntity> getAll();
 }
