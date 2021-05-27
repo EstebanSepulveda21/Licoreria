@@ -7,6 +7,7 @@ import com.licoreria.licoreria.products.infrastructure.mapper.ProductMapper;
 import com.licoreria.licoreria.shared.domain.Repository;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -29,5 +30,10 @@ public class ProductRepositoryPostgres implements ProductsRepository {
     @Override
     public void delete(ProductEntity productEntity) {
         productRepositoryJPA.deleteById(productEntity.getCodigo());
+    }
+
+    @Override
+    public List<ProductEntity> getAll() {
+        return productRepositoryJPA.findAll();
     }
 }

@@ -1,5 +1,6 @@
 package com.licoreria.licoreria.warehouse.infrastructure;
 
+import com.licoreria.licoreria.typeProducts.infrastructure.entities.TypeProductsEntity;
 import com.licoreria.licoreria.warehouse.aplication.create.WarehouseRequest;
 import com.licoreria.licoreria.warehouse.domain.Warehouse;
 import com.licoreria.licoreria.warehouse.domain.create.WarehouseCreator;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -50,6 +52,11 @@ public class WarehouseController
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(warehouseById.get(),HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<WareHouseEntity>> getAll(){
+        return ResponseEntity.ok().body(this.warehouseCreator.getAll());
     }
 
     //Update

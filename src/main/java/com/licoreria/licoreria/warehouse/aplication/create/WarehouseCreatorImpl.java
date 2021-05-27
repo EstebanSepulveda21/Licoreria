@@ -8,6 +8,7 @@ import com.licoreria.licoreria.warehouse.infrastructure.entities.WareHouseEntity
 import com.licoreria.licoreria.warehouse.infrastructure.mapper.WareHouseMapper;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -53,5 +54,10 @@ public class WarehouseCreatorImpl implements WarehouseCreator
         else {
             warehouseRepository.delete(warehouseDelete.get());
         }
+    }
+
+    @Override
+    public List<WareHouseEntity> getAll() {
+        return warehouseRepository.getAll();
     }
 }

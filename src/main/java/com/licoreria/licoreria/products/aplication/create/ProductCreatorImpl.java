@@ -9,6 +9,7 @@ import com.licoreria.licoreria.products.infrastructure.mapper.ProductMapper;
 import com.licoreria.licoreria.shared.domain.Service;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -58,6 +59,11 @@ public class ProductCreatorImpl implements ProductCreator
         {
             productsRepository.delete(productDelete.get());
         }
+    }
+
+    @Override
+    public List<ProductEntity> getAll() {
+        return productsRepository.getAll();
     }
 
 

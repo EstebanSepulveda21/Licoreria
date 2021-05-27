@@ -4,6 +4,7 @@ import com.licoreria.licoreria.products.aplication.create.ProductRequest;
 import com.licoreria.licoreria.products.domain.Product;
 import com.licoreria.licoreria.products.domain.create.ProductCreator;
 import com.licoreria.licoreria.products.infrastructure.entities.ProductEntity;
+import com.licoreria.licoreria.warehouse.infrastructure.entities.WareHouseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -49,6 +51,11 @@ public class ProductController
             return new ResponseEntity<>(httpHeaders,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(productById.get(),HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProductEntity>> getAll(){
+        return ResponseEntity.ok().body(this.productCreator.getAll());
     }
 
     //Update

@@ -6,6 +6,8 @@ import com.licoreria.licoreria.warehouse.domain.WarehouseRepository;
 import com.licoreria.licoreria.warehouse.infrastructure.entities.WareHouseEntity;
 import com.licoreria.licoreria.warehouse.infrastructure.mapper.WareHouseMapper;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -28,5 +30,10 @@ public class WareHuseRepositoryPostgres implements WarehouseRepository {
     @Override
     public void delete(WareHouseEntity wareHouseEntity) {
         wareHouseRepositoryJPA.deleteById(wareHouseEntity.getCodigo());
+    }
+
+    @Override
+    public List<WareHouseEntity> getAll() {
+        return wareHouseRepositoryJPA.findAll();
     }
 }
